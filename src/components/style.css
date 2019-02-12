@@ -1,0 +1,180 @@
+h1 {
+    margin: 0;
+}
+
+/*search boxes*/
+.gridContainer {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 5px;
+}
+
+.search {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 5px;
+}
+
+.search > input, button {
+    margin: 2px 2px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.search > button {
+    background-color: #efefef;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search > button:hover {
+    background-color: grey;
+    color: gainsboro;
+    font-weight: lighter;
+}
+
+/*menu*/
+.tagsSection {
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 5px 10px;
+    color: #666666;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.activeTag, .btn:hover {
+    color: white;
+    background-color: #666666;
+    border-radius: 5px;
+}
+
+.activeTagBtn {
+    color: #ff186b;
+    background-color: #efefef;
+    border: 1px white solid;
+    border-radius: 1px;
+    padding: 5px 20px;
+}
+
+.gridTags {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    width: 200px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    font-size: 12px;
+    background-color: #efefef;
+}
+
+@media screen and (max-width: 800px) {
+    .tagsSection {
+        display: none
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .gridTags {
+        display: none
+    }
+}
+
+/*widget*/
+.widgetArea {
+    width: 600px;
+    padding: 30px;
+    margin: 30px 0;
+    background-color: white;
+    border: solid lightgrey 1px;
+}
+
+.listItemBox {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-column-gap: 20px;
+}
+
+.itemBox {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    background-color: black;
+    color: #fff;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.itemBox > button {
+    background: none;
+    color: #ffffff;
+    border-left: #a7a7a7 1px solid;
+    border-radius: 0;
+    padding: 5px 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btnChange {
+    border: none;
+    border-radius: 0;
+    padding: 10px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #98a85d;
+    margin-top: 20px;
+}
+
+.widgetItemSelect {
+    background-color: #4b4b4b;
+    color: #ffffff;
+    padding: 5px 30px 30px 30px;
+    margin-top: 40px;
+}
+
+.widgetFlex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.widgetGrid{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 10px;
+}
+
+.widgetGrid input{
+    padding: 0 10px;
+    color: gray;
+    width: 200px;
+}
+.selectBox {
+    border: none;
+    width: 100px;
+    overflow: hidden;
+    background: #fafafa
+}
+
+.selectBox select{
+    border: none;
+    padding: 5px 10px;
+    width: 100%;
+    background: transparent none;
+    -webkit-appearance: none;
+}
+
+.selectBox select:focus {
+    outline: none;
+}
+
+.selectItemBox {
+    background-color: black;
+    height: 400px;
+    margin: 30px auto;
+    overflow: scroll;
+    display: flex;
+    padding: 10px 20px;
+}

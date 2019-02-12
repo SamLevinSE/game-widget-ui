@@ -1,28 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import SearchBox from "./components/SearchBox";
+import Menu from "./components/Menu";
+import Widget from "./components/Widget";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            "tags": [
+                {"id": 1, "active": false, "title": "World Of Tanks"},
+                {"id": 2, "active": true, "title": "World Of Warplanes"},
+                {"id": 3, "active": false, "title": "World Of Warship"},
+            ]
+        }
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <SearchBox/>
+                <Menu tags={this.state.tags}/>
+                <Widget/>
+            </div>
+        );
+    }
 }
 
 export default App;
