@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import './App.css';
 import SearchBox from "./components/SearchBox";
 import Tags from "./components/Tags";
 import Widget from "./components/Widget";
+import './App.css';
+import "./style.css";
 
 class App extends Component {
     constructor(props, context) {
@@ -14,7 +15,7 @@ class App extends Component {
         return (
             <div className="App">
                 <SearchBox/>
-                <Tags tags={this.state.tags}/>
+                <Tags/>
                 <Widget/>
             </div>
         );

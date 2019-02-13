@@ -11,53 +11,43 @@ class Tags extends Component {
                 {"id": 3, "title": "World Of Warship"},
             ],
             activeTags: {"id": 2, "title": "World Of Warplanes"},
-            displayingA: "inlineBlock",
-            displayingB: "inlineBlock",
+            displaying: "none",
         }
     }
 
+    // This method will be called each time user clicked on a button and will change the style and state (active tag)
     onClickBtn = (tag) => {
-        console.log(this.state.displayingA);
-        console.log(this.state.displayingB);
-        console.log(this.state.activeTags);
-
         if (this.state.smallScreen) {
             if (tag.id === this.state.activeTags.id) {
                 this.getStyles();
-                console.log("change show/hide style");
             } else {
                 this.getStyles();
                 this.setState({activeTags: tag});
-                console.log("make this btn active");
             }
         } else {
             this.setState({activeTags: tag});
-            console.log("make this btn active big screen");
         }
     };
 
+    // This method will be called from the onClickBtn method for changing the state
     getStyles = () => {
-        if (this.state.displayingB === "none") {
-            console.log("change show");
-            this.setState({displayingB: "inlineBlock"})
+        if (this.state.displaying === "none") {
+            this.setState({displaying: "inline-block"})
         } else {
-            console.log("change hide");
-            this.setState({displayingB: "none"})
+            this.setState({displaying: "none"})
         }
-        console.log(this.state.displayingA);
-        console.log(this.state.displayingB);
-        console.log(this.state.activeTags);
     };
 
+    // This method will add the "->" before the title of active tag in small screen
     activeTag = (title) => "-> " + title;
 
     render() {
-        const {tags, activeTags, smallScreen, displayingA, displayingB} = this.state;
+        const {tags, activeTags, smallScreen, displaying} = this.state;
 
         // 1300 px
         const listItem = tags.map((tag) => (
             <button
-                style={tag.title !== activeTags.title && smallScreen ? {display: displayingB} : {display: displayingA}}
+                style={tag.title !== activeTags.title && smallScreen ? {display: displaying} : {display: "inline-block"}}
                 className={tag.title === activeTags.title && !smallScreen ? "activeTag" : "btn"}
                 key={tag.id}
                 onClick={this.onClickBtn.bind(this, tag)}>
@@ -67,10 +57,10 @@ class Tags extends Component {
 
         return (
             <>
-                <div className="tagsSection">
+                <div className="tagsSection"> {/* screens > 800px */}
                     {listItem}
                 </div>
-                <div className="gridTags">
+                <div className="gridTags"> {/* screens < 800px */}
                     {listItem}
                 </div>
             </>

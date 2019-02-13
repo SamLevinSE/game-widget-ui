@@ -884,7 +884,6 @@ class Widget extends Component {
 
     // This method will update the search (state) each time a user press a key
     updateSearch = (e) => {
-        console.log(e.target.value);
         this.setState({
             search: e.target.value
         })
@@ -894,7 +893,7 @@ class Widget extends Component {
     saveSelectItems = () => {
         const {tempSelectedItems} = this.state;
         tempSelectedItems.length > 0 ?
-        this.setState({selectedItems: tempSelectedItems}) : alert("Nothing to save!");
+            this.setState({selectedItems: tempSelectedItems}) : alert("Nothing to save!");
         this.showHideSelectItems()
     };
 
@@ -902,7 +901,6 @@ class Widget extends Component {
     cancelSelectItems = () => {
         this.showHideSelectItems();
         this.setState({tempSelectedItems: []});
-        console.log("cancel clicked")
     };
 
     render() {
