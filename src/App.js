@@ -3,7 +3,7 @@ import SearchBox from "./components/SearchBox";
 import Tags from "./components/Tags";
 import Widget from "./components/Widget";
 import './App.css';
-import "./style.css";
+import "./components/style.css";
 
 class App extends Component {
     constructor(props, context) {
