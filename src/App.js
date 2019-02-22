@@ -15,7 +15,9 @@ class App extends Component {
         return (
             <div className="App">
                 <SearchBox/>
+                <hr/>
                 <Tags/>
+                <hr/>
                 <Widget/>
             </div>
         );

@@ -2,16 +2,39 @@ import React from 'react';
 
 function SearchBox() {
     return (
-        <div className="gridContainer">
-            <div className="search">
-                <input type="text" placeholder="Search Box ..."/>
-                <button>SEARCH</button>
+        <>
+            {/*Display: Grid*/}
+            <div className="gridContainer">
+                <div className="search">
+                    <input type="text"
+                           className="input-box"
+                           placeholder="Search"/>
+                    <button className="search-btn">SEARCH</button>
+                </div>
+                <div className="search">
+                    <input type="text"
+                           className="input-box"
+                           placeholder="Why?"/>
+                    <button className="search-btn">GO</button>
+                </div>
             </div>
-            <div className="search">
-                <input type="text" placeholder="Why?"/>
-                <button>Go</button>
+            <hr/>
+            {/*Display: Flex*/}
+            <div className="gridContainer">
+                <div className="search-2">
+                    <input type="text"
+                           className="input-box"
+                           placeholder="Search"/>
+                    <button className="search-btn">SEARCH</button>
+                </div>
+                <div className="search-2">
+                    <input type="text"
+                           className="input-box"
+                           placeholder="Why?"/>
+                    <button className="search-btn">GO</button>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 

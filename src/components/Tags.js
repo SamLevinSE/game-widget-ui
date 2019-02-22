@@ -39,7 +39,28 @@ class Tags extends Component {
     };
 
     // This method will add the "->" before the title of active tag in small screen
-    activeTag = (title) => "-> " + title;
+    activeTag = (title) => {
+        if (title === this.state.activeTags.title && this.state.smallScreen) {
+            return this.state.displaying === "none" ? `\xa0\xa0\xa0\xa0\xa0\xa0${title}` : "->\xa0" + title
+        } else if (title !== this.state.activeTags.title && this.state.smallScreen) {
+            return this.state.displaying === "none" ? title : `\xa0\xa0\xa0\xa0\xa0\xa0${title}`
+        } else {
+            return title
+        }
+
+    };
+
+    // This method will add the "->" before the title of active tag in small screen
+    classTag = (title) => {
+        if (title === this.state.activeTags.title && this.state.smallScreen) {
+            return "activeSmallTag"
+        } else if (title === this.state.activeTags.title && !this.state.smallScreen) {
+            return "activeTag"
+        } else {
+            return "tag"
+        }
+
+    };
 
     render() {
         const {tags, activeTags, smallScreen, displaying} = this.state;
@@ -51,7 +72,7 @@ class Tags extends Component {
                 className={tag.title === activeTags.title && !smallScreen ? "activeTag" : "btn"}
                 key={tag.id}
                 onClick={this.onClickBtn.bind(this, tag)}>
-                {tag.title === activeTags.title && smallScreen ? this.activeTag(tag.title) : tag.title}
+                {this.activeTag(tag.title)}
             </button>
         ));
 

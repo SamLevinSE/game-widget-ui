@@ -806,9 +806,7 @@ class Widget extends Component {
                     "name": "Element 200"
                 }
             ],
-            selectedItems: [
-                "Element 2", "Element 186"
-            ],
+            selectedItems: [],
             tempSelectedItems: [],
             selectFilter: 10,
             maxSelect: 3,
@@ -856,10 +854,7 @@ class Widget extends Component {
 
     // This method will change/update the selectFilter (state). If the filter is set to NoFilter, it will show all 200 items
     filterChange = (event) => {
-        let value = null;
-        const noFilter = "NoFilter";
-        event.target.value === noFilter ? value = 200 : value = event.target.value;
-        this.setState({"selectFilter": value})
+        this.setState({"selectFilter": event.target.value});
     };
 
     // This method will remove or add an item by checking the checkbox next to the items
@@ -867,17 +862,17 @@ class Widget extends Component {
         const isChecked = e.target.checked;
         this.setState((prevState) => {
             if (isChecked === true && prevState.tempSelectedItems.length < prevState.maxSelect) {
-                const newState = prevState.tempSelectedItems;
+                let newState = prevState.tempSelectedItems;
                 newState.push(item);
-                this.setState({tempSelectedItems: newState});
+                return{tempSelectedItems: newState};
             } else if (!isChecked) {
-                const newState = prevState.tempSelectedItems;
+                let newState = prevState.tempSelectedItems;
                 for (let j = 0; j < prevState.tempSelectedItems.length; j++) {
                     if (item === newState[j]) {
                         newState.splice(j, 1);
                     }
                 }
-                this.setState({tempSelectedItems: newState});
+                return{tempSelectedItems: newState};
             }
         });
     };
@@ -931,7 +926,7 @@ class Widget extends Component {
         //filtering
         const allItems = this.state.items.filter(item => {
             return item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
-        }).slice(0, this.state.selectFilter);
+        }).slice(0, this.state.selectFilter !== "NoFilter" ? this.state.selectFilter : this.state.items.length);
 
         return (
             <div className="widgetArea">
@@ -956,7 +951,7 @@ class Widget extends Component {
                             <label>Search </label>
                             <input
                                 value={this.state.search}
-                                onChange={this.updateSearch.bind(this)}
+                                onChange={this.updateSearch}
                                 type="text"/>
                         </div>
                         <div className="widgetGrid">
@@ -978,9 +973,11 @@ class Widget extends Component {
                             {allItems.map((item) => (
                                 <p key={item.id}>
                                     <input
+                                        className="checkmark"
                                         type="checkBox"
+                                        checked={this.state.selectedItems.includes(item.name) || this.state.tempSelectedItems.includes(item.name)}
                                         onChange={(e) => this.handleInputChange(e, item.name)}
-                                        value={item.name}/>
+                                    />
                                     <label>{item.name}</label>
                                 </p>
                             ))}
